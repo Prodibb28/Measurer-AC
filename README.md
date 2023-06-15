@@ -5,13 +5,15 @@ Este proyecto implementa un medidor de consumo eléctrico utilizando un Arduino 
 ## Requisitos
 
 - Arduino Uno
-- Sensor de voltaje
-- Sensor de corriente
+- Sensor de voltaje ZMPBT-101
+- Sensor de corriente SCT-013
+- Circuito sumador de voltaje LM358
 
 ## Configuración
 
-1. Conecta el sensor de voltaje al pin analógico A1 del Arduino Uno.
-2. Conecta el sensor de corriente al pin analógico A0 del Arduino Uno.
+1. Conecta el sensor de voltaje ZMPBT-101 al pin analógico A1 del Arduino Uno.
+2. Conecta el sensor de corriente SCT-013 al circuito sumador de voltaje LM358.
+3. Conecta la salida del circuito sumador de voltaje LM358 al pin analógico A0 del Arduino Uno.
 
 ## Uso
 
@@ -22,9 +24,14 @@ Este proyecto implementa un medidor de consumo eléctrico utilizando un Arduino 
 ## Detalles del Código
 
 - El código proporcionado utiliza una aproximación de sumatoria discreta para calcular la potencia promedio, la tensión eficaz, la corriente eficaz y el factor de potencia.
-- Ajusta el periodo de muestreo en la variable `period` para adaptarlo a tus necesidades específicas.
-- El código asume que la carga es puramente resistiva y puede no ser preciso en sistemas con cargas no lineales o reactivas.
-- Si deseas realizar análisis más complejos, considera utilizar técnicas como la transformada de Fourier utilizando la biblioteca "arduinoFFT".
+- Utiliza un circuito sumador de voltaje LM358 para elevar el voltaje de salida del sensor de corriente SCT-013 y hacerlo compatible con el ADC del Arduino Uno.
+- El código actualmente no incluye la funcionalidad para determinar si el factor de potencia está en adelanto o en atraso.
+- La determinación de la frecuencia de la red eléctrica aún no ha sido implementada en el código.
+- El código puede optimizarse para mejorar el rendimiento y la eficiencia.
+
+## Esquema de Conexiones
+
+Se proporcionará un archivo de esquema de conexiones (formato PDF) en la carpeta "Esquema" del repositorio. Asegúrate de revisar el esquema para conectar correctamente los sensores y el circuito sumador de voltaje al Arduino Uno.
 
 ## Contribuciones
 
@@ -38,4 +45,11 @@ La licencia Creative Commons Attribution 4.0 International (CC BY 4.0) permite a
 
 Si deseas utilizar este proyecto o partes de él en tu propio proyecto, asegúrate de revisar y cumplir con los términos y condiciones de la licencia CC BY 4.0.
 
-Espero que esta versión del README sea útil para tu proyecto. Recuerda personalizarlo y ajustarlo según las necesidades específicas de tu aplicación y asegurarte de cumplir con los términos de la licencia Creative Commons que elijas.
+Estamos trabajando en desarrollar las siguientes características adicionales:
+- Determinación del factor de potencia en adelanto o atraso.
+- Determinación de la frecuencia de la red eléctrica.
+- Optimización del código para mejorar el rendimiento.
+- Actualización del esquema de conexiones.
+
+Agradecemos cualquier contribución adicional para mejorar este proyecto. Si tienes ideas o sugerencias sobre cómo implementar estas características o cualquier otra mejora, no dudes en compartirlas.
+
